@@ -33,11 +33,23 @@ int main(int argc, char * argv[]) {
         }
         NSLog(@"%@", [mutArray componentsJoinedByString:@","]);
         
+//checking time with array
+        double startTime = CACurrentMediaTime();
+        NSLog(@"index of object is %lu, search time: %f",
+              (unsigned long)[mutArray indexOfObject:[NSNumber numberWithInteger:74]],
+              CACurrentMediaTime() - startTime);
+//on my mac time was 0.000109 seconds
         
-        NSLog(@"index of object is %lu",(unsigned long)[mutArray indexOfObject:[NSNumber numberWithInteger:74]]);
         
+//checking time with set
         NSSet* set2 = [[NSSet setWithArray:mutArray] copy];
-        NSLog(@"Is set2 contain 74? - %@", [set2 containsObject:[NSNumber numberWithInteger:74]] ? @"YES": @"NO");
+
+        startTime = CACurrentMediaTime();
+        NSLog(@"Is set2 contain 74? - %@, search time: %f",
+              [set2 containsObject:[NSNumber numberWithInteger:74]] ? @"YES": @"NO",
+              CACurrentMediaTime() - startTime);
+//on my mac time was 0.000026 seconds
+// NSSet is much faster then NSMutableArray
         
         //releasing mutable array and set
         [set2 release];
