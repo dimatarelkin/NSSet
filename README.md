@@ -1,4 +1,5 @@
-# NSSet
+# NSSet #[JumpToCode](https://github.com/dimatarelkin/NSSet/blob/master/ClassroomNSSet/ClassroomNSSet/main.m)
+
 Please, find your tasks on NSSet and NSMutableSet bellow:
 Create NSArray, containing 30 objects. Add duplicates to array.
 - Use NSSet to exclude duplicates from array.
