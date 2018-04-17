@@ -14,13 +14,27 @@ int main(int argc, char * argv[]) {
     @autoreleasepool {
         
 //1 Use NSSet to exclude duplicates from array.
-        NSArray* arr = @[@1, @2, @3, @3, @23, @4, @2, @4, @2, @4, @212];  //will be autoreleased
+        
+        // NSArray* arr = @[@1, @2, @3, @3, @23, @4, @2, @4, @2, @4, @212];  //will be autoreleased
+        
+        NSMutableArray* arr = [[NSMutableArray alloc] init]; //need te be released
+        for (int i= 0; i < 15; i++) {
+            [arr addObject: [NSNumber numberWithInteger:i]];
+            [arr addObject:[NSNumber numberWithInt:arc4random_uniform(30)]];
+        }
+        
+       
         NSLog(@"arr %@",[arr componentsJoinedByString:@"-"]);
+        NSLog(@"arr consists of %lu elements", (unsigned long)[arr count]);
+        
         
         NSSet* set = [[NSSet setWithArray:arr] copy];
-        NSLog(@"set %@", [set description]);
         
-        //releasing set
+        NSLog(@"set %@", [set description]);
+        NSLog(@"set consists of %lu elemnts",(unsigned long)[set count]);
+        
+        //releasing set and arr
+        [arr release];
         [set release];
         
         
